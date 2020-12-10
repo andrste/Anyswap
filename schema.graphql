@@ -1,0 +1,35 @@
+type TokenTransfer @entity {
+  id: ID!
+  from: String!
+  to: String!
+  amount: BigDecimal!
+  timestamp: BigInt!
+}
+
+type TokenApproval @entity {
+  id: ID!
+  from: String!
+  to: String!
+  amount: BigDecimal!
+}
+
+type Mint @entity {
+  id: ID!
+  txhash: String!
+  account: String!
+  amount: BigDecimal!
+}
+
+type Burn @entity {
+  id: ID!
+  account: String!
+  bind_address: String!
+  amount: BigDecimal!
+}
+
+type DCRMowner @entity {
+  id: ID!
+  old_owner: String!
+  new_owner: String!
+  effective_height: BigInt!
+}

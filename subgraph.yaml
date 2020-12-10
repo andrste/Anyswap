@@ -1,0 +1,36 @@
+specVersion: 0.0.2
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum/contract
+    name: Contract
+    network: mainnet
+    source:
+      address: "0xf99d58e463A2E07e5692127302C20A191861b4D6"
+      abi: Contract
+      startBlock: 11267788
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.4
+      language: wasm/assemblyscript
+      entities:
+        - LogChangeDCRMOwner
+        - LogSwapin
+        - LogSwapout
+        - Transfer
+        - Approval
+      abis:
+        - name: Contract
+          file: ./abis/Contract.json
+      eventHandlers:
+        - event: LogChangeDCRMOwner(indexed address,indexed address,indexed uint256)
+          handler: handleLogChangeDCRMOwner
+        - event: LogSwapin(indexed bytes32,indexed address,uint256)
+          handler: handleLogSwapin
+        - event: LogSwapout(indexed address,indexed address,uint256)
+          handler: handleLogSwapout
+        - event: Transfer(indexed address,indexed address,uint256)
+          handler: handleTransfer
+        - event: Approval(indexed address,indexed address,uint256)
+          handler: handleApproval
+      file: ./src/mapping.ts
