@@ -1,0 +1,1 @@
+Anyswap token subgraph
